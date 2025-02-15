@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机端人机验证</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .verification-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .verification-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .verification-button:hover {
+            background-color: #0056b3;
+        }
+
+        .success-message {
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="verification-container">
+        <h2>请完成人机验证</h2>
+        <button class="verification-button" id="verificationButton">点击验证</button>
+        <p class="success-message" id="successMessage">验证成功！正在跳转...</p>
+    </div>
+
+    <script>
+        const verificationButton = document.getElementById('verificationButton');
+        const successMessage = document.getElementById('successMessage');
+
+        verificationButton.addEventListener('click', () => {
+            // 模拟验证成功
+            successMessage.style.display = 'block';
+            verificationButton.style.display = 'none';
+
+            // 2秒后跳转到指定网页
+            setTimeout(() => {
+                window.location.href = 'https://ai.xiaomiai.us.kg/INFO'; // 验证成功后跳转的网页
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
