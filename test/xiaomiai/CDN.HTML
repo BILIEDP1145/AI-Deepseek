@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XIAOMIAI-DNSTEST</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0 20px 40px;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            height: 20px;
+            transition: all 0.3s;
+        }
+
+        #ip-tooltip {
+            display: none;
+            position: absolute;
+            bottom: 40px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        #status-bar:hover #ip-tooltip {
+            display: block;
+        }
+
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h2>网速测试</h2>
+        <button onclick="testSpeed()">开始测速</button>
+        <div id="speed-result" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>连通性测试</h2>
+        <p>测试目标: <code>ai.xiaomiai.us.kg/INFO</code></p>
+        <button onclick="testConnectivity()">测试连通性</button>
+        <div id="connectivity-result" class="result"></div>
+    </div>
+
+    <div id="status-bar">
+        <div id="ip-tooltip">正在获取IP...</div>
+    </div>
+
+    <script>
+        // 获取并显示IP地址
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip-tooltip').textContent = `IP: ${data.ip} (${data.city}, ${data.country})`;
+            })
+            .catch(() => {
+                document.getElementById('ip-tooltip').textContent = '无法获取IP信息';
+            });
+
+        // 网速测试函数
+        function testSpeed() {
+            const resultDiv = document.getElementById('speed-result');
+            resultDiv.textContent = '正在测试...';
+            
+            const imageUrl = 'https://source.unsplash.com/random/5000x5000'; // 5MB左右图片
+            const startTime = Date.now();
+            
+            fetch(imageUrl)
+                .then(response => {
+                    const totalSize = response.headers.get('content-length');
+                    const duration = (Date.now() - startTime) / 1000;
+                    const speedMbps = ((totalSize * 8) / (duration * 1024 * 1024)).toFixed(2);
+                    resultDiv.innerHTML = `下载速度: ${speedMbps} Mbps<br>
+                                        测试用时: ${duration.toFixed(2)}秒<br>
+                                        数据大小: ${(totalSize / 1024 / 1024).toFixed(2)} MB`;
+                })
+                .catch(() => {
+                    resultDiv.textContent = '测速失败，请重试';
+                });
+        }
+
+        // 连通性测试函数
+        function testConnectivity() {
+            const url = 'https://ai.xiaomiai.us.kg/INFO';
+            const resultDiv = document.getElementById('connectivity-result');
+            
+            resultDiv.textContent = '正在测试...';
+            
+            fetch(url, { mode: 'no-cors' })
+                .then(() => {
+                    resultDiv.textContent = `成功连接到 ${url}`;
+                    resultDiv.style.color = 'green';
+                })
+                .catch(error => {
+                    resultDiv.textContent = `无法连接到 ${url} (错误: ${error})`;
+                    resultDiv.style.color = 'red';
+                });
+        }
+    </script>
+</body>
+</html>
