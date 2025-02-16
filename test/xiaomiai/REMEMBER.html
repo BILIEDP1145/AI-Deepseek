@@ -1,79 +1,83 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>INFO!</title>
-      
-      <!-- Tailwind CSS -->
-      <script src="https://cdn.tailwindcss.com"></script>
-      
-      <!-- Google Fonts -->
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-      
-      <style>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>XIAOMIAI报名测试</title>
+    <style>
         body {
-          font-family: 'Poppins', sans-serif;
-          background-color: #edf2f7;
-          padding: 0;
-          margin: 0;
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+            background-color: #f0f0f0;  /* 淡灰色背景 */
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
         }
-        .container {
-          width: 100%;
-          max-width: 600px;
-          background-color: #ffffff;
-          border-radius: 12px;
-          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.05);
-          padding: 20px;
-          text-align: center;
+
+        .email-container {
+            background-color: #333;  /* 深色背景 */
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
         }
-        .header__title h1 {
-          font-size: 3rem;
-          font-weight: 700;
-          margin-bottom: 20px;
+
+        h1 {
+            color: white;
+            margin-bottom: 1.5rem;
         }
-        .header__text {
-          font-size: 1.25rem;
-          margin-bottom: 20px;
+
+        .email-display {
+            font-size: 1.2em;
+            color: white;
+            background-color: #444;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
         }
-        .header__button {
-          background-color: #1a202c;
-          color: #ffffff;
-          padding: 10px 20px;
-          border-radius: 5px;
-          text-decoration: none;
-          font-weight: 500;
-          transition: background-color 0.3s;
-          cursor: pointer;
+
+        .outlook-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0078D4;  /* Outlook品牌蓝色 */
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.2s ease;
+            font-weight: bold;
         }
-        .header__button:hover {
-          background-color: #2d3748;
+
+        /* 鼠标悬停效果 */
+        .outlook-btn:hover {
+            background-color: #006cba;
         }
-      </style>
-    </head>
-    <body>
-      <main class="container">
-        <div class="content">
-          <div class="header">
-            <div class="header__title">
-              <h1 class="header__h1">XIAO-MI-Deepseek</h1>
-              <h1 class="header__h1">内测申请邮箱：</h1>
-              <h1 class="header__h1">Deepseek-XiaoMiAI-test.memory@hotmail.com</h1>
-            </div>
-          </div>
+
+        /* 点击反馈效果 */
+        .outlook-btn:active {
+            background-color: #0056b3;
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <h1>已报名测试邮箱</h1>
+        <div class="email-display">
+            Deepseek-XiaoMiAI-test.memory@hotmail.com
         </div>
-      </main>
+        <a href="https://outlook.com" class="outlook-btn" target="_blank">
+            前往Outlook邮箱
+        </a>
+    </div>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Millenniumic 页脚示例</title>
+    <title> </title>
     <style>
         /* 基本样式 */
         body {
